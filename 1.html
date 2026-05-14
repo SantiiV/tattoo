@@ -8,11 +8,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body { font-family: 'Helvetica Neue', Arial, sans-serif; }
-    .hero { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('assets/images/hero.jpg'); background-size: cover; background-position: center; }
-    .artist-card, .insta-card { transition: all 0.3s ease; }
-    .artist-card:hover, .insta-card:hover { transform: translateY(-8px); }
-    .instagram-grid img { transition: all 0.3s ease; }
-    .instagram-grid img:hover { transform: scale(1.05); }
+    .hero { 
+      background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('assets/images/hero.jpg'); 
+      background-size: cover; 
+      background-position: center; 
+    }
+    .artist-card { transition: all 0.3s ease; }
+    .artist-card:hover { transform: translateY(-8px); }
+
+    /* Botón Instagram estilo que enviaste */
+    .btn-instagram {
+      background-color: #000;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn-instagram:hover {
+      background-color: #1a1a1a;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-white overflow-x-hidden">
@@ -67,78 +80,123 @@
     <div class="max-w-7xl mx-auto">
       <h2 class="text-5xl font-bold text-center mb-16">NUESTROS ARTISTAS</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <!-- Aquí mantengo los 7 artistas como antes (podes editar las descripciones) -->
+
         <div class="artist-card bg-zinc-900 rounded-3xl overflow-hidden">
           <img src="assets/images/jota.jpg" alt="Jota" class="w-full h-80 object-cover">
           <div class="p-8">
             <h3 class="text-3xl font-bold">Jota</h3>
-            <p class="text-rose-400">Realismo • Black & Grey</p>
+            <p class="text-rose-400 mb-1">Realismo • Black & Grey</p>
           </div>
         </div>
-        <!-- Repite los otros 6 artistas igual que en la versión anterior -->
+
+        <div class="artist-card bg-zinc-900 rounded-3xl overflow-hidden">
+          <img src="assets/images/angie.jpg" alt="Angie" class="w-full h-80 object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Angie</h3>
+            <p class="text-rose-400 mb-1">Fine Line • Minimalista</p>
+          </div>
+        </div>
+
+        <div class="artist-card bg-zinc-900 rounded-3xl overflow-hidden">
+          <img src="assets/images/clari.jpg" alt="Clari" class="w-full h-80 object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Clari</h3>
+            <p class="text-rose-400 mb-1">Color • Neo Traditional</p>
+          </div>
+        </div>
+
+        <div class="artist-card bg-zinc-900 rounded-3xl overflow-hidden">
+          <img src="assets/images/ricky.jpg" alt="Ricky" class="w-full h-80 object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Ricky</h3>
+            <p class="text-rose-400 mb-1">Traditional • Lettering</p>
+          </div>
+        </div>
+
+        <div class="artist-card bg-zinc-900 rounded-3xl overflow-hidden">
+          <img src="assets/images/mati.jpg" alt="Mati" class="w-full h-80 object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Mati</h3>
+            <p class="text-rose-400 mb-1">Realismo • Retrato</p>
+          </div>
+        </div>
+
+        <div class="artist-card bg-zinc-900 rounded-3xl overflow-hidden">
+          <img src="assets/images/esteban.jpg" alt="Esteban" class="w-full h-80 object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Esteban</h3>
+            <p class="text-rose-400 mb-1">Geométrico • Blackwork</p>
+          </div>
+        </div>
+
+        <div class="artist-card bg-zinc-900 rounded-3xl overflow-hidden">
+          <img src="assets/images/brian.jpg" alt="Brian" class="w-full h-80 object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Brian</h3>
+            <p class="text-rose-400 mb-1">Japanese • Large Scale</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- GALERÍA INSTAGRAM -->
+  <!-- GALERÍA + BOTÓN INSTAGRAM -->
   <section id="galeria" class="py-24 px-6 bg-zinc-900">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl font-bold mb-4">GALERÍA</h2>
-        <p class="text-xl text-zinc-400">Nuestro último trabajo en Instagram</p>
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" 
-           class="inline-flex items-center gap-3 mt-6 text-rose-400 hover:text-rose-300 transition text-lg">
-          <i class="fab fa-instagram text-3xl"></i>
-          <span>@patagoniaink.studio</span>
-        </a>
-      </div>
-
-      <!-- Instagram Grid -->
-      <div class="instagram-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <!-- Reemplaza estas imágenes con fotos reales de tu Instagram -->
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
-          <img src="assets/images/insta1.jpg" alt="Tattoo 1" class="w-full aspect-square object-cover">
-        </a>
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
-          <img src="assets/images/insta2.jpg" alt="Tattoo 2" class="w-full aspect-square object-cover">
-        </a>
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
-          <img src="assets/images/insta3.jpg" alt="Tattoo 3" class="w-full aspect-square object-cover">
-        </a>
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
-          <img src="assets/images/insta4.jpg" alt="Tattoo 4" class="w-full aspect-square object-cover">
-        </a>
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
-          <img src="assets/images/insta5.jpg" alt="Tattoo 5" class="w-full aspect-square object-cover">
-        </a>
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
-          <img src="assets/images/insta6.jpg" alt="Tattoo 6" class="w-full aspect-square object-cover">
-        </a>
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
-          <img src="assets/images/insta7.jpg" alt="Tattoo 7" class="w-full aspect-square object-cover">
-        </a>
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
-          <img src="assets/images/insta8.jpg" alt="Tattoo 8" class="w-full aspect-square object-cover">
-        </a>
-      </div>
-
-      <div class="text-center mt-12">
-        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank"
-           class="inline-block bg-white text-black px-10 py-4 rounded-full font-semibold hover:bg-gray-200 transition">
-          VER MÁS EN INSTAGRAM →
-        </a>
-      </div>
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-5xl font-bold mb-8">GALERÍA</h2>
+      <p class="text-xl text-zinc-400 mb-10">Seguinos en Instagram para ver nuestro trabajo diario</p>
+      
+      <!-- Botón Instagram estilo que enviaste -->
+      <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" 
+         class="btn-instagram inline-flex items-center gap-4 px-10 py-6 rounded-2xl text-xl font-medium mx-auto">
+        <i class="fab fa-instagram text-4xl"></i>
+        <span>@patagoniaink.studio</span>
+      </a>
     </div>
   </section>
 
   <!-- UBICACIÓN -->
   <section id="ubicacion" class="py-24 px-6 bg-zinc-950">
-    <!-- (mismo código de ubicación que antes) -->
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-5xl font-bold text-center mb-12">VISÍTANOS EN BARILOCHE</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-3xl mb-6">Dirección</h3>
+          <p class="text-2xl mb-8">Calle Ejemplo 456<br>San Carlos de Bariloche, Río Negro</p>
+          
+          <h3 class="text-3xl mb-6">Horarios</h3>
+          <p class="text-xl">
+            Martes a Sábado: 11:00 - 20:00<br>
+            Domingo y Lunes: Cerrado
+          </p>
+        </div>
+        <div class="bg-zinc-800 aspect-video rounded-3xl flex items-center justify-center text-zinc-400">
+          (Aquí iría el mapa de Google)
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="py-24 px-6">
-    <!-- (mismo formulario que antes) -->
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-5xl font-bold mb-4">¿LISTO PARA TU TATTOO?</h2>
+      <p class="text-xl text-zinc-400 mb-12">Contáctanos y cuéntanos tu idea</p>
+      
+      <form action="https://formspree.io/f/TU_CODIGO_AQUI" method="POST" class="space-y-8">
+        <div class="grid md:grid-cols-2 gap-6">
+          <input type="text" name="nombre" placeholder="Nombre" required class="bg-zinc-900 border border-zinc-700 p-5 rounded-2xl">
+          <input type="email" name="email" placeholder="Email" required class="bg-zinc-900 border border-zinc-700 p-5 rounded-2xl">
+        </div>
+        <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full bg-zinc-900 border border-zinc-700 p-5 rounded-2xl">
+        <textarea name="mensaje" rows="6" placeholder="Cuéntanos sobre tu idea..." required class="w-full bg-zinc-900 border border-zinc-700 p-5 rounded-2xl"></textarea>
+        
+        <button type="submit" class="w-full bg-rose-600 hover:bg-rose-500 py-6 text-lg font-semibold rounded-2xl transition">
+          ENVIAR MENSAJE
+        </button>
+      </form>
+    </div>
   </section>
 
   <footer class="bg-black py-12 text-center text-zinc-500 text-sm">
