@@ -18,7 +18,10 @@
   <!-- NAVEGACIÓN -->
   <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-zinc-800">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      <h1 class="text-2xl font-bold tracking-tighter">PATAGONIA INK</h1>
+      <a href="#" class="flex items-center">
+        <img src="assets/images/logo.jpg" alt="Patagonia Ink" class="h-10 md:h-12 w-auto">
+      </a>
+      
       <div class="hidden md:flex space-x-8 text-sm font-medium">
         <a href="#estudio" class="hover:text-rose-400 transition">ESTUDIO</a>
         <a href="#artistas" class="hover:text-rose-400 transition">ARTISTAS</a>
@@ -26,6 +29,7 @@
         <a href="#ubicacion" class="hover:text-rose-400 transition">UBICACIÓN</a>
         <a href="#contacto" class="hover:text-rose-400 transition">CONTACTO</a>
       </div>
+      
       <a href="#contacto" class="bg-white text-black px-6 py-3 text-sm font-semibold hover:bg-gray-200 transition">
         SOLICITAR TURNO
       </a>
@@ -35,14 +39,14 @@
   <!-- HERO -->
   <section class="hero h-screen flex items-center justify-center text-center relative">
     <div class="relative z-10 px-6 max-w-4xl mx-auto">
-      <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6">PATAGONIA INK</h1>
-      <p class="text-2xl md:text-3xl mb-10">Tattoo Studio</p>
-      <p class="text-lg md:text-xl max-w-md mx-auto mb-12 text-zinc-300">
-        Tatuajes custom de alta calidad en el corazón de la Patagonia
-      </p>
-      <a href="#contacto" class="inline-block bg-white text-black px-12 py-5 text-lg font-semibold hover:bg-gray-200 transition">
-        RESERVAR CITA
-      </a>
+      <img src="assets/images/logo.jpg" alt="Patagonia Ink" 
+           class="mx-auto mb-8 h-24 md:h-32 lg:h-40 w-auto">
+        <p class="text-lg md:text-xl max-w-md mx-auto mb-12 text-zinc-300">
+          Tatuajes custom de alta calidad en el corazón de la Patagonia
+        </p>
+        <a href="#contacto" class="inline-block bg-white text-black px-10 py-5 text-lg font-semibold hover:bg-gray-200 transition">
+          RESERVAR CITA
+        </a>
     </div>
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-sm tracking-widest">
       SCROLL ↓
@@ -209,10 +213,14 @@
     </div>
   </section>
 
-  <footer class="bg-black py-12 text-center text-zinc-500 text-sm">
+<footer class="bg-black py-12 text-center text-zinc-500">
+  <div class="max-w-7xl mx-auto px-6">
+    <img src="assets/images/logo.jpg" alt="Patagonia Ink" 
+         class="mx-auto mb-6 h-12 opacity-75">
     <p>© 2026 Patagonia Ink - Tattoo Studio • Todos los derechos reservados.</p>
-    <p class="mt-2">Hecho con pasión en la Patagonia</p>
-  </footer>
+    <p class="text-sm mt-2">San Carlos de Bariloche, Río Negro, Argentina</p>
+  </div>
+</footer>
 
 </body>
 </html>
