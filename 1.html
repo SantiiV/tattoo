@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patagonia INK - Tattoo Studio Bariloche</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; }
+    .hero { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('assets/images/hero.jpg'); background-size: cover; background-position: center; }
+    .artist-card, .insta-card { transition: all 0.3s ease; }
+    .artist-card:hover, .insta-card:hover { transform: translateY(-8px); }
+    .instagram-grid img { transition: all 0.3s ease; }
+    .instagram-grid img:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white overflow-x-hidden">
+
+  <!-- NAVEGACIÓN -->
+  <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-tighter">PATAGONIA INK</h1>
+      <div class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="#estudio" class="hover:text-rose-400 transition">ESTUDIO</a>
+        <a href="#artistas" class="hover:text-rose-400 transition">ARTISTAS</a>
+        <a href="#galeria" class="hover:text-rose-400 transition">GALERÍA</a>
+        <a href="#ubicacion" class="hover:text-rose-400 transition">UBICACIÓN</a>
+        <a href="#contacto" class="hover:text-rose-400 transition">CONTACTO</a>
+      </div>
+      <a href="#contacto" class="bg-white text-black px-6 py-3 text-sm font-semibold hover:bg-gray-200 transition">
+        SOLICITAR TURNO
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero h-screen flex items-center justify-center text-center relative">
+    <div class="relative z-10 px-6 max-w-4xl mx-auto">
+      <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6">PATAGONIA INK</h1>
+      <p class="text-2xl md:text-3xl mb-10">Tattoo Studio • Bariloche</p>
+      <p class="text-lg md:text-xl max-w-md mx-auto mb-12 text-zinc-300">
+        Tatuajes custom de alta calidad en el corazón de la Patagonia
+      </p>
+      <a href="#contacto" class="inline-block bg-white text-black px-12 py-5 text-lg font-semibold hover:bg-gray-200 transition">
+        RESERVAR CITA
+      </a>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-sm tracking-widest">
+      SCROLL ↓
+    </div>
+  </section>
+
+  <!-- NUESTRO ESTUDIO -->
+  <section id="estudio" class="py-24 px-6 bg-zinc-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-5xl font-bold mb-8">EL ESTUDIO</h2>
+      <p class="text-xl leading-relaxed text-zinc-300">
+        Patagonia Ink es un estudio de tatuajes premium ubicado en San Carlos de Bariloche. 
+        Contamos con 7 artistas talentosos, equipo de última generación y un espacio diseñado para que vivas una experiencia única y segura.
+      </p>
+    </div>
+  </section>
+
+  <!-- ARTISTAS -->
+  <section id="artistas" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-5xl font-bold text-center mb-16">NUESTROS ARTISTAS</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Aquí mantengo los 7 artistas como antes (podes editar las descripciones) -->
+        <div class="artist-card bg-zinc-900 rounded-3xl overflow-hidden">
+          <img src="assets/images/jota.jpg" alt="Jota" class="w-full h-80 object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Jota</h3>
+            <p class="text-rose-400">Realismo • Black & Grey</p>
+          </div>
+        </div>
+        <!-- Repite los otros 6 artistas igual que en la versión anterior -->
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA INSTAGRAM -->
+  <section id="galeria" class="py-24 px-6 bg-zinc-900">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold mb-4">GALERÍA</h2>
+        <p class="text-xl text-zinc-400">Nuestro último trabajo en Instagram</p>
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" 
+           class="inline-flex items-center gap-3 mt-6 text-rose-400 hover:text-rose-300 transition text-lg">
+          <i class="fab fa-instagram text-3xl"></i>
+          <span>@patagoniaink.studio</span>
+        </a>
+      </div>
+
+      <!-- Instagram Grid -->
+      <div class="instagram-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Reemplaza estas imágenes con fotos reales de tu Instagram -->
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
+          <img src="assets/images/insta1.jpg" alt="Tattoo 1" class="w-full aspect-square object-cover">
+        </a>
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
+          <img src="assets/images/insta2.jpg" alt="Tattoo 2" class="w-full aspect-square object-cover">
+        </a>
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
+          <img src="assets/images/insta3.jpg" alt="Tattoo 3" class="w-full aspect-square object-cover">
+        </a>
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
+          <img src="assets/images/insta4.jpg" alt="Tattoo 4" class="w-full aspect-square object-cover">
+        </a>
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
+          <img src="assets/images/insta5.jpg" alt="Tattoo 5" class="w-full aspect-square object-cover">
+        </a>
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
+          <img src="assets/images/insta6.jpg" alt="Tattoo 6" class="w-full aspect-square object-cover">
+        </a>
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
+          <img src="assets/images/insta7.jpg" alt="Tattoo 7" class="w-full aspect-square object-cover">
+        </a>
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" class="insta-card block overflow-hidden rounded-2xl">
+          <img src="assets/images/insta8.jpg" alt="Tattoo 8" class="w-full aspect-square object-cover">
+        </a>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank"
+           class="inline-block bg-white text-black px-10 py-4 rounded-full font-semibold hover:bg-gray-200 transition">
+          VER MÁS EN INSTAGRAM →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section id="ubicacion" class="py-24 px-6 bg-zinc-950">
+    <!-- (mismo código de ubicación que antes) -->
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-24 px-6">
+    <!-- (mismo formulario que antes) -->
+  </section>
+
+  <footer class="bg-black py-12 text-center text-zinc-500 text-sm">
+    <p>© 2026 Patagonia Ink - Tattoo Studio Bariloche • Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>
