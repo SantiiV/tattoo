@@ -11,6 +11,16 @@
     .hero { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('assets/images/hero.jpg'); background-size: cover; background-position: center; }
     .artist-card { transition: all 0.3s ease; }
     .artist-card:hover { transform: translateY(-8px); }
+    .btn-instagram {
+      background-color: #000;
+      color: white;
+      transition: all 0.3s ease;
+      border: 1px solid #333;
+    }
+    .btn-instagram:hover {
+      background-color: #1a1a1a;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-white overflow-x-hidden">
@@ -202,23 +212,32 @@
     </div>
   </section>
 
-  <!-- END -->
-  <section id="end" class="py-24 px-6 bg-zinc-900">
-    <div class="max-w-5xl mx-auto">
-      <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" 
-           class="inline-flex items-center gap-3 mt-6 text-rose-400 hover:text-rose-300 transition text-lg">
-          <i class="fab fa-instagram text-3xl"></i>
-          <span>@patagoniaink.studio</span>
-      </a>
-    </div>
-  </section>
-
-<footer class="bg-black py-12 text-center text-zinc-500">
+<footer class="bg-black py-16 border-t border-zinc-800">
   <div class="max-w-7xl mx-auto px-6">
-    <img src="assets/images/logoo.jpg" alt="Patagonia Ink" 
-         class="mx-auto mb-6 h-16 opacity-75">
-    <p>© 2026 Patagonia Ink - Tattoo Studio • Todos los derechos reservados.</p>
-    <p class="text-sm mt-2">San Carlos de Bariloche, Río Negro, Argentina</p>
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      
+      <!-- Logo -->
+      <div>
+        <img src="assets/images/logo.jpg" alt="Patagonia Ink" class="h-14 mx-auto md:mx-0 opacity-90">
+      </div>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" 
+         class="btn-instagram inline-flex items-center gap-4 px-8 py-5 rounded-2xl text-lg font-medium hover:scale-105 transition">
+        <i class="fab fa-instagram text-4xl"></i>
+        <div>
+          <span class="block text-sm opacity-75">Seguinos en</span>
+          <span class="font-semibold">@patagoniaink.studio</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center text-zinc-500 text-sm mt-12">
+      <p>© 2026 Patagonia Ink - Tattoo Studio • Todos los derechos reservados.</p>
+      <p class="mt-1">San Carlos de Bariloche, Río Negro, Argentina</p>
+    </div>
   </div>
 </footer>
 
