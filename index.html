@@ -103,13 +103,16 @@
           RESERVAR CITA
         </a>
     </div>
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 group cursor-default flex flex-col items-center gap-2">
-    <span class="text-xs tracking-widest text-zinc-400 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0">
-      SCROLL DOWN
-    </span>
-    <div class="w-px h-12 bg-zinc-400 group-hover:bg-white transition-colors duration-300 animate-pulse"></div>
-    <div class="w-2 h-2 border-r border-b border-zinc-400 group-hover:border-white rotate-45 transition-colors duration-300"></div>
-  </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 group flex flex-col items-center gap-2 cursor-default">
+      <span class="text-xs tracking-widest text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        SCROLL DOWN
+      </span>
+      <div class="animate-bounce">
+        <svg width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L12 12L23 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
   </section>
 
   <!-- NUESTRO ESTUDIO -->
