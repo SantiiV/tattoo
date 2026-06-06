@@ -29,9 +29,10 @@
   <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-zinc-800">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
       <a href="#" class="flex items-center">
-        <img src="assets/images/logo.png" alt="Patagonia Ink" class="h-14 md:h-26 w-auto">
+        <img src="assets/images/logo.png" alt="Patagonia Ink" class="h-14 w-auto">
       </a>
-      
+  
+      <!-- Links desktop -->
       <div class="hidden md:flex space-x-8 text-sm font-medium">
         <a href="#estudio" class="hover:text-rose-400 transition">ESTUDIO</a>
         <a href="#artistas" class="hover:text-rose-400 transition">ARTISTAS</a>
@@ -39,13 +40,51 @@
         <a href="#ubicacion" class="hover:text-rose-400 transition">UBICACIÓN</a>
         <a href="#contacto" class="hover:text-rose-400 transition">CONTACTO</a>
       </div>
-      
-      <a href="#contacto" class="bg-white text-black px-6 py-3 text-sm font-semibold hover:bg-gray-200 transition">
+  
+      <div class="flex items-center gap-4">
+        <a href="#contacto" class="hidden md:block bg-white text-black px-6 py-3 text-sm font-semibold hover:bg-gray-200 transition">
+          SOLICITAR TURNO
+        </a>
+        <!-- Botón hamburguesa -->
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()">
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar1"></span>
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span>
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Menú mobile -->
+    <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-zinc-800 px-6 py-6 flex flex-col gap-6 text-sm font-medium">
+      <a href="#estudio" class="hover:text-rose-400 transition" onclick="closeMenu()">ESTUDIO</a>
+      <a href="#artistas" class="hover:text-rose-400 transition" onclick="closeMenu()">ARTISTAS</a>
+      <a href="#galeria" class="hover:text-rose-400 transition" onclick="closeMenu()">GALERÍA</a>
+      <a href="#ubicacion" class="hover:text-rose-400 transition" onclick="closeMenu()">UBICACIÓN</a>
+      <a href="#contacto" class="hover:text-rose-400 transition" onclick="closeMenu()">CONTACTO</a>
+      <a href="#contacto" class="bg-white text-black px-6 py-3 text-center font-semibold hover:bg-gray-200 transition" onclick="closeMenu()">
         SOLICITAR TURNO
       </a>
     </div>
   </nav>
-
+  
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+      menu.classList.toggle('hidden');
+      bar1.classList.toggle('rotate-45');
+      bar1.classList.toggle('translate-y-2');
+      bar2.classList.toggle('opacity-0');
+      bar3.classList.toggle('-rotate-45');
+      bar3.classList.toggle('-translate-y-2');
+    }
+    function closeMenu() {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    }
+  </script>
+  
   <!-- HERO -->
   <section class="hero h-screen flex items-center justify-center text-center relative">
     <div class="relative z-10 px-6 max-w-4xl mx-auto">
