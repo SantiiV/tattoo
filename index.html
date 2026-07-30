@@ -3,7 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patagonia INK - Tattoo Studio</title>
+  <title>Patagonia INK - Tattoo Studio | Tatuajes en San Carlos de Bariloche</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Estudio de tatuajes premium en San Carlos de Bariloche. 7 artistas especializados en realismo, fine line, japonés, tradicional, dotwork y más. Reservá tu turno por WhatsApp.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://patagoniaink.com/">
+
+  <!-- Open Graph / redes sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Patagonia INK - Tattoo Studio">
+  <meta property="og:description" content="Tatuajes custom de alta calidad en el corazón de la Patagonia. 7 artistas, estilos variados, San Carlos de Bariloche.">
+  <meta property="og:image" content="https://patagoniaink.com/assets/images/hero.jpg">
+  <meta property="og:url" content="https://patagoniaink.com/">
+  <meta property="og:locale" content="es_AR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -24,9 +43,50 @@
     html {
       scroll-behavior: smooth;
     }
+    /* Skip link: oculto hasta que recibe foco por teclado */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      background: white;
+      color: black;
+      padding: 12px 20px;
+      font-weight: 600;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+    }
   </style>
+
+  <!-- JSON-LD: SEO local para Google Maps / búsquedas "tatuajes Bariloche" -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooParlor",
+    "name": "Patagonia Ink",
+    "image": "https://patagoniaink.com/assets/images/hero.jpg",
+    "url": "https://patagoniaink.com/",
+    "telephone": "+5491159614252",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Carlos de Bariloche",
+      "addressRegion": "Río Negro",
+      "addressCountry": "AR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/patagoniaink.studio/"
+    ]
+  }
+  <!-- TODO: agregar "geo": { "@type": "GeoCoordinates", "latitude": ..., "longitude": ... } cuando tengan la dirección exacta -->
+  </script>
 </head>
 <body class="bg-zinc-950 text-white overflow-x-hidden">
+
+  <!-- Accesibilidad: skip link para navegación por teclado -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <!-- NAVEGACIÓN -->
   <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-zinc-800">
@@ -34,27 +94,28 @@
       <a href="#" class="flex items-center">
         <img src="assets/images/logo.png" alt="Patagonia Ink" class="h-14 w-auto">
       </a>
-  
+
       <!-- Links desktop -->
       <div class="hidden md:flex space-x-8 text-sm font-medium">
         <a href="#estudio" class="hover:text-rose-400 transition">ESTUDIO</a>
         <a href="#artistas" class="hover:text-rose-400 transition">ARTISTAS</a>
         <a href="#contacto" class="hover:text-rose-400 transition">CONTACTO</a>
       </div>
-  
+
       <div class="flex items-center gap-4">
         <a href="#contacto" class="hidden md:block bg-white text-black px-6 py-3 text-sm font-semibold hover:bg-gray-200 transition">
           SOLICITAR TURNO
         </a>
         <!-- Botón hamburguesa -->
-        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()">
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()"
+                aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
           <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar1"></span>
           <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span>
           <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar3"></span>
         </button>
       </div>
     </div>
-  
+
     <!-- Menú mobile -->
     <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-zinc-800 px-6 py-6 flex flex-col gap-6 text-sm font-medium">
       <a href="#estudio" class="hover:text-rose-400 transition" onclick="closeMenu()">ESTUDIO</a>
@@ -65,23 +126,40 @@
       </a>
     </div>
   </nav>
-  
+
   <script>
+    // Número de WhatsApp centralizado: cambiarlo acá lo actualiza en todo el sitio
+    const WHATSAPP_NUMBER = "5491159614252";
+    const WHATSAPP_MESSAGE = encodeURIComponent("Hola! Vi su página y me gustaría consultar sobre un tatuaje.");
+    const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.js-whatsapp-link').forEach(el => {
+        el.setAttribute('href', WHATSAPP_URL);
+      });
+    });
+
     function toggleMenu() {
       const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-btn');
       const bar1 = document.getElementById('bar1');
       const bar2 = document.getElementById('bar2');
       const bar3 = document.getElementById('bar3');
+      const isOpen = !menu.classList.contains('hidden');
+
       menu.classList.toggle('hidden');
       bar1.classList.toggle('rotate-45');
       bar1.classList.toggle('translate-y-2');
       bar2.classList.toggle('opacity-0');
       bar3.classList.toggle('-rotate-45');
       bar3.classList.toggle('-translate-y-2');
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      btn.setAttribute('aria-label', isOpen ? 'Abrir menú de navegación' : 'Cerrar menú de navegación');
     }
-  
+
     function closeMenu() {
       const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-btn');
       const bar1 = document.getElementById('bar1');
       const bar2 = document.getElementById('bar2');
       const bar3 = document.getElementById('bar3');
@@ -89,217 +167,221 @@
       bar1.classList.remove('rotate-45', 'translate-y-2');
       bar2.classList.remove('opacity-0');
       bar3.classList.remove('-rotate-45', '-translate-y-2');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Abrir menú de navegación');
     }
   </script>
-  
-  <!-- HERO -->
-  <section class="hero h-screen flex items-center justify-center text-center relative">
-    <div class="relative z-10 px-6 max-w-4xl mx-auto">
-      <img src="assets/images/logo.png" alt="Patagonia Ink" 
-           class="mx-auto mb-8 h-32 md:h-40 lg:h-52 w-auto">
-        <p class="text-lg md:text-xl max-w-md mx-auto mb-12 text-zinc-300">
-          Tatuajes custom de alta calidad en el corazón de la Patagonia
-        </p>
-        <a href="#contacto" class="inline-block bg-white text-black px-10 py-5 text-lg font-semibold hover:bg-gray-200 transition">
-          RESERVAR CITA
-        </a>
-    </div>
-    <a href="#estudio" class="absolute bottom-10 left-1/2 -translate-x-1/2 group flex items-center justify-center w-16 h-16 cursor-pointer">
-      <svg class="group-hover:opacity-0 transition-opacity duration-300 absolute" width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 1L12 12L23 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="text-xs tracking-widest text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute whitespace-nowrap">
-        SCROLL DOWN
-      </span>
-    </a>
-  </section>
 
-  <!-- NUESTRO ESTUDIO -->
-  <section id="estudio" class="py-24 px-6 bg-zinc-900 scroll-mt-20">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-5xl font-bold mb-8">EL ESTUDIO</h2>
-      <p class="text-xl leading-relaxed text-zinc-300">
-        Patagonia Ink es un estudio de tatuajes premium ubicado en San Carlos de Bariloche. 
-        Contamos con 7 artistas talentosos, equipo de última generación y un espacio diseñado para que vivas una experiencia única y segura.
-      </p>
-      <div class="mt-12 grid md:grid-cols-3 gap-8 text-left">
-        <div class="bg-zinc-800 p-8 rounded-2xl">
-          <h3 class="text-2xl mb-3">Higiene</h3>
-          <p class="text-zinc-400">Estándares internacionales de esterilización y materiales desechables.</p>
-        </div>
-        <div class="bg-zinc-800 p-8 rounded-2xl">
-          <h3 class="text-2xl mb-3">Custom</h3>
-          <p class="text-zinc-400">Diseños únicos creados especialmente para cada cliente.</p>
-        </div>
-        <div class="bg-zinc-800 p-8 rounded-2xl">
-          <h3 class="text-2xl mb-3">Experiencia</h3>
-          <p class="text-zinc-400">Más de X años tatuando en Patagonia.</p>
-        </div>
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero h-screen flex items-center justify-center text-center relative">
+      <div class="relative z-10 px-6 max-w-4xl mx-auto">
+        <img src="assets/images/logo.png" alt="Patagonia Ink"
+             class="mx-auto mb-8 h-32 md:h-40 lg:h-52 w-auto">
+          <p class="text-lg md:text-xl max-w-md mx-auto mb-12 text-zinc-300">
+            Tatuajes custom de alta calidad en el corazón de la Patagonia
+          </p>
+          <a href="#contacto" class="inline-block bg-white text-black px-10 py-5 text-lg font-semibold hover:bg-gray-200 transition">
+            RESERVAR CITA
+          </a>
       </div>
-    </div>
-  </section>
-
-  <!-- ARTISTAS -->
-  <section id="artistas" class="py-24 px-6 scroll-mt-20">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-5xl font-bold text-center mb-16">NUESTROS ARTISTAS</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-  
-        <!-- Jota -->
-        <a href="artistas/jota.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
-          <div class="overflow-hidden">
-            <img src="assets/images/jota.jpg" alt="Jota" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
-          </div>
-          <div class="p-8 flex justify-between items-end">
-            <div>
-              <h3 class="text-3xl font-bold">Jota</h3>
-              <p class="text-rose-400 mt-1">Realismo · Black & Grey</p>
-            </div>
-            <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
-          </div>
-        </a>
-  
-        <!-- Angie -->
-        <a href="artistas/angie.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
-          <div class="overflow-hidden">
-            <img src="assets/images/angie.jpg" alt="Angie" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
-          </div>
-          <div class="p-8 flex justify-between items-end">
-            <div>
-              <h3 class="text-3xl font-bold">Angie</h3>
-              <p class="text-rose-400 mt-1">Fine Line · Minimalista · Feminine</p>
-            </div>
-            <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
-          </div>
-        </a>
-  
-        <!-- Clari -->
-        <a href="artistas/clari.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
-          <div class="overflow-hidden">
-            <img src="assets/images/clari.jpg" alt="Clari" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
-          </div>
-          <div class="p-8 flex justify-between items-end">
-            <div>
-              <h3 class="text-3xl font-bold">Clari</h3>
-              <p class="text-rose-400 mt-1">Color · Neo Traditional · Japanese</p>
-            </div>
-            <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
-          </div>
-        </a>
-  
-        <!-- Ricky -->
-        <a href="artistas/ricky.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
-          <div class="overflow-hidden">
-            <img src="assets/images/ricky.jpg" alt="Ricky" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
-          </div>
-          <div class="p-8 flex justify-between items-end">
-            <div>
-              <h3 class="text-3xl font-bold">Ricky</h3>
-              <p class="text-rose-400 mt-1">Traditional · Old School · Lettering</p>
-            </div>
-            <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
-          </div>
-        </a>
-  
-        <!-- Mati -->
-        <a href="artistas/mati.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
-          <div class="overflow-hidden">
-            <img src="assets/images/mati.jpg" alt="Mati" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
-          </div>
-          <div class="p-8 flex justify-between items-end">
-            <div>
-              <h3 class="text-3xl font-bold">Mati</h3>
-              <p class="text-rose-400 mt-1">Realismo · Retrato · Dark Art</p>
-            </div>
-            <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
-          </div>
-        </a>
-  
-        <!-- Esteban -->
-        <a href="artistas/esteban.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
-          <div class="overflow-hidden">
-            <img src="assets/images/esteban.jpg" alt="Esteban" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
-          </div>
-          <div class="p-8 flex justify-between items-end">
-            <div>
-              <h3 class="text-3xl font-bold">Esteban</h3>
-              <p class="text-rose-400 mt-1">Geométrico · Dotwork · Blackwork</p>
-            </div>
-            <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
-          </div>
-        </a>
-  
-        <!-- Brian -->
-        <a href="artistas/brian.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
-          <div class="overflow-hidden">
-            <img src="assets/images/brian.jpg" alt="Brian" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
-          </div>
-          <div class="p-8 flex justify-between items-end">
-            <div>
-              <h3 class="text-3xl font-bold">Brian</h3>
-              <p class="text-rose-400 mt-1">Japanese · Irezumi · Large Scale</p>
-            </div>
-            <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
-          </div>
-        </a>
-  
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto" class="py-24 px-6 bg-zinc-900 scroll-mt-20">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-5xl font-bold mb-4">¿LISTO PARA TU PRÓXIMO TATTOO?</h2>
-      <p class="text-xl text-zinc-400 mb-12">Contactanos por WhatsApp y contanos tu idea</p>
-  
-      <a href="https://wa.me/5491159614252?text=Hola!%20Vi%20su%20página%20y%20me%20gustaría%20consultar%20sobre%20un%20tatuaje."
-        target="_blank"
-        class="inline-flex items-center gap-4 bg-green-600 hover:bg-green-500 px-10 py-6 text-xl font-semibold transition rounded-2xl">
-        <i class="fab fa-whatsapp text-3xl"></i>
-        ESCRIBINOS POR WHATSAPP
+      <a href="#estudio" class="absolute bottom-10 left-1/2 -translate-x-1/2 group flex items-center justify-center w-16 h-16 cursor-pointer" aria-label="Bajar a la sección Estudio">
+        <svg class="group-hover:opacity-0 transition-opacity duration-300 absolute" width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L12 12L23 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="text-xs tracking-widest text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute whitespace-nowrap">
+          SCROLL DOWN
+        </span>
       </a>
-  
-      <p class="text-zinc-500 text-sm mt-6">Te respondemos a la brevedad</p>
-    </div>
-  </section>
-  
+    </section>
+
+    <!-- NUESTRO ESTUDIO -->
+    <section id="estudio" class="py-24 px-6 bg-zinc-900 scroll-mt-20">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl font-bold mb-8">EL ESTUDIO</h2>
+        <p class="text-xl leading-relaxed text-zinc-300">
+          Patagonia Ink es un estudio de tatuajes premium ubicado en San Carlos de Bariloche.
+          Contamos con 7 artistas talentosos, equipo de última generación y un espacio diseñado para que vivas una experiencia única y segura.
+        </p>
+        <div class="mt-12 grid md:grid-cols-3 gap-8 text-left">
+          <div class="bg-zinc-800 p-8 rounded-2xl">
+            <h3 class="text-2xl mb-3">Higiene</h3>
+            <p class="text-zinc-400">Estándares internacionales de esterilización y materiales desechables.</p>
+          </div>
+          <div class="bg-zinc-800 p-8 rounded-2xl">
+            <h3 class="text-2xl mb-3">Custom</h3>
+            <p class="text-zinc-400">Diseños únicos creados especialmente para cada cliente.</p>
+          </div>
+          <div class="bg-zinc-800 p-8 rounded-2xl">
+            <h3 class="text-2xl mb-3">Experiencia</h3>
+            <!-- TODO: reemplazar "X" por el número real de años -->
+            <p class="text-zinc-400">Más de X años tatuando en Patagonia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTISTAS -->
+    <section id="artistas" class="py-24 px-6 scroll-mt-20">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16">NUESTROS ARTISTAS</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+          <!-- Jota -->
+          <a href="artistas/jota.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
+            <div class="overflow-hidden">
+              <img src="assets/images/jota.jpg" alt="Jota, tatuador de Patagonia Ink especializado en realismo" loading="lazy" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex justify-between items-end">
+              <div>
+                <h3 class="text-3xl font-bold">Jota</h3>
+                <p class="text-rose-400 mt-1">Realismo · Black & Grey</p>
+              </div>
+              <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
+            </div>
+          </a>
+
+          <!-- Angie -->
+          <a href="artistas/angie.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
+            <div class="overflow-hidden">
+              <img src="assets/images/angie.jpg" alt="Angie, tatuadora de Patagonia Ink especializada en fine line" loading="lazy" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex justify-between items-end">
+              <div>
+                <h3 class="text-3xl font-bold">Angie</h3>
+                <p class="text-rose-400 mt-1">Fine Line · Minimalista · Feminine</p>
+              </div>
+              <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
+            </div>
+          </a>
+
+          <!-- Clari -->
+          <a href="artistas/clari.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
+            <div class="overflow-hidden">
+              <img src="assets/images/clari.jpg" alt="Clari, tatuadora de Patagonia Ink especializada en color y estilo japonés" loading="lazy" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex justify-between items-end">
+              <div>
+                <h3 class="text-3xl font-bold">Clari</h3>
+                <p class="text-rose-400 mt-1">Color · Neo Traditional · Japanese</p>
+              </div>
+              <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
+            </div>
+          </a>
+
+          <!-- Ricky -->
+          <a href="artistas/ricky.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
+            <div class="overflow-hidden">
+              <img src="assets/images/ricky.jpg" alt="Ricky, tatuador de Patagonia Ink especializado en old school y lettering" loading="lazy" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex justify-between items-end">
+              <div>
+                <h3 class="text-3xl font-bold">Ricky</h3>
+                <p class="text-rose-400 mt-1">Traditional · Old School · Lettering</p>
+              </div>
+              <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
+            </div>
+          </a>
+
+          <!-- Mati -->
+          <a href="artistas/mati.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
+            <div class="overflow-hidden">
+              <img src="assets/images/mati.jpg" alt="Mati, tatuador de Patagonia Ink especializado en realismo y retrato" loading="lazy" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex justify-between items-end">
+              <div>
+                <h3 class="text-3xl font-bold">Mati</h3>
+                <p class="text-rose-400 mt-1">Realismo · Retrato · Dark Art</p>
+              </div>
+              <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
+            </div>
+          </a>
+
+          <!-- Esteban -->
+          <a href="artistas/esteban.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
+            <div class="overflow-hidden">
+              <img src="assets/images/esteban.jpg" alt="Esteban, tatuador de Patagonia Ink especializado en geométrico y dotwork" loading="lazy" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex justify-between items-end">
+              <div>
+                <h3 class="text-3xl font-bold">Esteban</h3>
+                <p class="text-rose-400 mt-1">Geométrico · Dotwork · Blackwork</p>
+              </div>
+              <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
+            </div>
+          </a>
+
+          <!-- Brian -->
+          <a href="artistas/brian.html" class="artist-card bg-zinc-900 rounded-3xl overflow-hidden block group">
+            <div class="overflow-hidden">
+              <img src="assets/images/brian.jpg" alt="Brian, tatuador de Patagonia Ink especializado en irezumi japonés" loading="lazy" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-8 flex justify-between items-end">
+              <div>
+                <h3 class="text-3xl font-bold">Brian</h3>
+                <p class="text-rose-400 mt-1">Japanese · Irezumi · Large Scale</p>
+              </div>
+              <span class="text-zinc-500 group-hover:text-white transition text-2xl">→</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-24 px-6 bg-zinc-900 scroll-mt-20">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-5xl font-bold mb-4">¿LISTO PARA TU PRÓXIMO TATTOO?</h2>
+        <p class="text-xl text-zinc-400 mb-12">Contactanos por WhatsApp y contanos tu idea</p>
+
+        <a href="#" class="js-whatsapp-link inline-flex items-center gap-4 bg-green-600 hover:bg-green-500 px-10 py-6 text-xl font-semibold transition rounded-2xl"
+          target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp text-3xl" aria-hidden="true"></i>
+          ESCRIBINOS POR WHATSAPP
+        </a>
+
+        <p class="text-zinc-500 text-sm mt-6">Te respondemos a la brevedad</p>
+      </div>
+    </section>
+
+  </main>
+
   <!-- BOTÓN FLOTANTE WHATSAPP -->
-  <a href="https://wa.me/5491159614252?text=Hola!%20Vi%20su%20página%20y%20me%20gustaría%20consultar%20sobre%20un%20tatuaje."
-    target="_blank"
-    class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-400 text-white p-4 rounded-full shadow-2xl transition hover:scale-110"
-    title="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp text-4xl"></i>
+  <a href="#" class="js-whatsapp-link fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-400 text-white p-4 rounded-full shadow-2xl transition hover:scale-110"
+    target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" title="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp text-4xl" aria-hidden="true"></i>
   </a>
 
-<footer class="bg-black py-16 border-t border-zinc-800">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-      
-      <!-- Logo -->
-      <div>
-        <img src="assets/images/logo.png" alt="Patagonia Ink" class="h-14 mx-auto md:mx-0 opacity-90">
+  <footer class="bg-black py-16 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+
+        <!-- Logo -->
+        <div>
+          <img src="assets/images/logo.png" alt="Patagonia Ink" class="h-14 mx-auto md:mx-0 opacity-90">
+        </div>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" rel="noopener"
+           class="btn-instagram inline-flex items-center gap-4 px-8 py-5 rounded-2xl text-lg font-medium hover:scale-105 transition">
+          <i class="fab fa-instagram text-4xl" aria-hidden="true"></i>
+          <div>
+            <span class="block text-sm opacity-75">Seguinos en</span>
+            <span class="font-semibold">@patagoniaink.studio</span>
+          </div>
+        </a>
+
       </div>
 
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/patagoniaink.studio/" target="_blank" 
-         class="btn-instagram inline-flex items-center gap-4 px-8 py-5 rounded-2xl text-lg font-medium hover:scale-105 transition">
-        <i class="fab fa-instagram text-4xl"></i>
-        <div>
-          <span class="block text-sm opacity-75">Seguinos en</span>
-          <span class="font-semibold">@patagoniaink.studio</span>
-        </div>
-      </a>
-
+      <!-- Copyright -->
+      <div class="text-center text-zinc-500 text-sm mt-12">
+        <p>© 2026 Patagonia Ink - Tattoo Studio • Todos los derechos reservados.</p>
+        <p class="mt-1">San Carlos de Bariloche, Río Negro, Argentina</p>
+      </div>
     </div>
-
-    <!-- Copyright -->
-    <div class="text-center text-zinc-500 text-sm mt-12">
-      <p>© 2026 Patagonia Ink - Tattoo Studio • Todos los derechos reservados.</p>
-      <p class="mt-1">San Carlos de Bariloche, Río Negro, Argentina</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
